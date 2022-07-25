@@ -18,7 +18,7 @@ function Vote({
 }: {
   votes: number;
   oldVotes: number;
-  sortingIndex: number;
+  sortingIndex?: number;
 }) {
   return (
     <div className='flex justify-center text-black overflow-hidden h-[72px] border-cyan-200 ring-0'>
@@ -53,7 +53,7 @@ function GenderAvatar({
 }: {
   gender: Gender;
   size: 'sm' | 'lg';
-  className: string;
+  className?: string;
 }) {
   let avatarSize: string;
   if (size === 'sm') {
@@ -130,7 +130,7 @@ function DisplayName({
       onClick={() => {
         const newArray = Array.from(showNameArray);
         newArray[sortingIdx] = !showNameArray[sortingIdx];
-        oldShowNameArray(newArray);
+        oldShowNameArray = newArray;
       }}
     >
       <div
@@ -155,12 +155,21 @@ function App({
   onVoting: (idx: number) => void;
   isShowAllName: boolean;
   showNameRange: number;
-  cancelAllInterval: any;
+  cancelAllInterval: () => void;
 }) {
   // const [oldRank, setOldRank] = useState<Candidate[]>(rank);
-  const [showNameArray, setShowNameArray] = useState(Array(10).fill(false));
-  const getPreviousCandidateData = (index: number) =>
-    oldRank.find((item) => item.index === index);
+  const [showNameArray] = useState(Array(10).fill(false));
+  const getPreviousCandidateData = (index: number): Candidate =>
+    oldRank.find((item) => item.index === index) || {
+      votes: 0,
+      name: 'default name',
+      nickName: 'defualt nickname',
+      index: 999,
+      gender: Gender.female,
+      property: [],
+      isShowName: false,
+      isSpy: false,
+    };
   useEffect(() => {
     document.title = '盧總３０大壽';
   }, []);
@@ -224,11 +233,7 @@ function App({
                 }
               />
               <div className='h-[8px]' />
-              <GenderAvatar
-                gender={rank[1].gender}
-                size='sm'
-                index={rank[1].index}
-              />
+              <GenderAvatar gender={rank[1].gender} size='sm' />
               <div className='h-[21px]' />
               <Vote
                 votes={rank[1].votes}
@@ -253,11 +258,7 @@ function App({
                 }
               />
               <div className='h-[16px]' />
-              <GenderAvatar
-                gender={rank[0].gender}
-                size='lg'
-                index={rank[0].index}
-              />
+              <GenderAvatar gender={rank[0].gender} size='lg' />
               <div className='h-[16px]' />
               <Vote
                 votes={rank[0].votes}
@@ -282,11 +283,7 @@ function App({
                 }
               />
               <div className='h-[8px]' />
-              <GenderAvatar
-                gender={rank[2].gender}
-                size='sm'
-                index={rank[2].index}
-              />
+              <GenderAvatar gender={rank[2].gender} size='sm' />
               <div className='h-[21px]' />
               <Vote
                 votes={rank[2].votes}

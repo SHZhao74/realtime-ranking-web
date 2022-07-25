@@ -6,7 +6,6 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:react/jsx-runtime',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
@@ -19,8 +18,5 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
-  rules: {
-    'require-jsdoc': 0,
-    'object-curly-spacing': ['warn', 'always'],
-  },
+  rules: {},
 };

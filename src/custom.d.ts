@@ -11,7 +11,7 @@ type Candidate = {
   nickName: string;
   index: number;
   votes: number;
-  avatar: string; //url
+  // avatar: string; //url
   gender: number;
   property: string[];
   isShowName: boolean;

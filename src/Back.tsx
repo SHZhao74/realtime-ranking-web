@@ -1,30 +1,24 @@
 import React from 'react';
 import PistolImg from './pistol.png';
 const Back = ({
-  rankState: [rank, setRank],
+  rankState: [rank],
   onVoting,
   isShowAllName,
   setIsShowAllName,
-  showNameRange,
-  setShowNameRange,
   initializeApp,
-  updateData,
-  isStopUpdate,
-  setIsStopUpdate,
 }: {
   rankState: [Candidate[], React.Dispatch<React.SetStateAction<Candidate[]>>];
   onVoting: (idx: number) => void;
   isShowAllName: boolean;
-  setIsShowAllName: any;
+  setIsShowAllName: React.Dispatch<React.SetStateAction<boolean>>;
   isStopUpdate: boolean;
-  setIsStopUpdate: any;
+  setIsStopUpdate: React.Dispatch<React.SetStateAction<boolean>>;
   showNameRange: number;
-  setShowNameRange: any;
+  setShowNameRange: React.Dispatch<React.SetStateAction<number>>;
   initializeApp: () => void;
   updateData: () => void;
 }) => {
-  const reveal10 = () => {};
-  const VoteButton = ({ rank, idx }: { rank: Candidate[]; idx: number }) => (
+  const VoteButton = ({ idx }: { rank: Candidate[]; idx: number }) => (
     <button
       className='btn btn-circle btn-outline p-1 flex bg-transparent'
       onClick={() => onVoting(idx)}
