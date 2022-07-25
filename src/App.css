@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*::-webkit-scrollbar {
+  display: none;
+  color: #454545;
+}
+html {
+  font-family: 'David Libre', 'Prata', serif;
+}
+@keyframes clockSlide {
+  0% {
+    transform: translateY(-100%);
+  }
+  25%,
+  75% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+@keyframes newsTicker {
+  0% {
+    transform: translate3D(0, 0, 0);
+  }
+  50% {
+    transform: translate3D(-200%, 0, 0);
+  }
+  100% {
+    transform: translate3D(0, 0, 0);
+  }
+}
+
+@keyframes scrollDown {
+  from {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(50%);
+  }
+}
+@keyframes FadeIn {
+  from {
+    opacity: 50%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+@keyframes FadeOut {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+@keyframes ScaleSmall {
+  from {
+    transform: scale(200%);
+  }
+  to {
+    transform: scale(100%);
+  }
+}
